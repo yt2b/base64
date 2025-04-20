@@ -32,7 +32,7 @@ fn encode(input: Vec<u8>) -> Vec<u8> {
                 .iter()
                 .enumerate()
                 .fold(0u32, |merged, (i, x)| merged | (*x as u32) << (16 - 8 * i));
-            // 6ビットずつに分割して文字列に変換する
+            // 6ビットずつに分割してBase64の文字に変換する
             let len = (8 * bytes.len()).div_ceil(6);
             (0..len)
                 .map(|i| (merged >> (18 - 6 * i)) & 63)
